@@ -1,0 +1,135 @@
+/* .container{
+    
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+} */
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
+.dogs{
+    background-image: url("../../../img/imagen3.jpg");
+    background-repeat: repeat;
+    min-height: 100vh;
+ 
+    width: 100% !important;
+
+}
+
+.dogs .body-dogs{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.dogs .body-dogs .div-select{
+    display: flex;
+    flex-direction: column;
+    color: #9e6730;
+    font-family: Cookie;
+    font-size: 25px;
+    
+}
+.dogs .body-dogs .select{
+
+    width: 150px;
+    background-image: linear-gradient(to right, #9e6730 0%, #e8c39e 100%);
+    color: bisque;
+    font-family: Cookie;
+    font-size: 18px;
+    padding-left: 10px;
+    border: 2px solid #e8c39e ;
+    border-radius: 20px;
+}
+.dogs .body-dogs .select .opt{
+    background-color: #e8c39e;
+    color: black;
+}
+.dogs .body-dogs .select:hover{
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.7);
+}
+
+
+.dogs .body-dogs .image .crear{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    margin-left: 30%;
+    background-image: linear-gradient(to right, #9e6730 0%, #e8c39e 100%);
+    border-radius:0.8rem;
+    border: thick double #f3dbc3;
+    font-family: Cookie ;
+    letter-spacing:1px;
+    font-size: 25px;
+    color: wheat;
+  
+}
+.dogs .body-dogs .image .crear:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.7);
+}
+
+.container{
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+   /*  align-items: center; */
+    justify-content: center;
+    /* background-image: url("../../../img/huesos.jpg");
+    border-radius: 20px; */
+  /*   box-shadow: 0 3px 13px 1px rgba(224, 195, 195, 0.09); /* sombras */
+     @media (max-width: 500px){
+        align-items: center;
+       justify-content: center;
+       width:100%;
+
+    }  
+}
+.dogs .body-dogs .reload{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+    width: 120px;
+    background-image: linear-gradient(to right, #9e6730 0%, #e8c39e 100%);
+    border-radius:20px;
+    border: 2px solid #e8c39e ;
+    font-family: Cookie ;
+    letter-spacing:1px;
+    font-size: 18px;
+    padding-left: 10px;
+    color: wheat;
+}
+.dogs .body-dogs .reload:hover{
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.7);
+}
+.contenedor{
+    width: 330px;
+    min-height: 430px;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin: 20px;
+    text-align: center;
+    transition: all 0.25s;
+}
+.contenedor:hover{
+    transform: translateY(-20px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.7);
+    background-image:linear-gradient(to right, #9e6730 0%, #e8c39e 100%); ;
+}
+.dogs .paginado{
+    display: flex;
+    margin-top: 20px;
+    flex-wrap: wrap;
+   
+}

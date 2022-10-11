@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
+
+
+.creado{
+    position: fixed;
+    z-index: 999;  
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    max-height: 100%;
+    background-color:rgba(27, 26, 26, 0.75) ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.check{
+    background-color: rgb(135, 240, 226);
+    height: 350px;
+    width: 350px;
+    border-radius: 40px;
+    border: 5px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.check img{
+    height: 50%;
+    width: 50%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+   
+}
+.check span{
+    font-family: Lobster;
+    font-size: 35px;
+
+}
+.buttons{
+   
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 50%;
+
+}
+ .but-home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    border-radius: 10px;
+     width: 70px;
+     font-family: Kalam;
+     font-size: 15px;
+     background-color: rgb(241, 213, 169);
+     border: 3px solid rgb(226, 175, 92);
+}
+.but-cerrar{
+   
+    height: 30px;
+    border-radius: 10px;
+     width: 50px;
+     margin-left: 20px;
+     font-family: Lobster;
+     font-size: 15px;
+     border: 3px solid  rgb(247, 68, 112);
+     background-color: rgb(243, 106, 140);
+}

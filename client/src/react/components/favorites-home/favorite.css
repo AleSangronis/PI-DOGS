@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+.fav-home{
+    background-image: url("../../../img/imagen3.jpg");
+    background-repeat: repeat;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100% !important;
+    @media (max-width: 500px){
+        margin: 0;
+        padding: 0;
+       width:100%;
+       min-height: 100vh;
+
+    }  
+}
+.fav-home .titulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.fav-home .titulo .fav-h1{
+    color: #9e6730;
+    font-family: Lobster ;
+    letter-spacing:2px;
+ }
+.fav-home .botones{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.fav-home .botones button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 88px;
+    border-radius: 30px;
+    border: thick double #f3dbc3;
+    font-family: Cookie ;
+    letter-spacing:1px;
+    font-size: 25px;
+    color:rgb(236, 209, 171);
+    background-image: linear-gradient(to right, #9e6730 0%, #e8c39e 100%);
+}
+.fav-home .botones button:hover{
+    
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.7);
+    
+}
+
+
+.container-fav{
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+   /*  align-items: center; */
+    justify-content: center;
+    /* background-image: url("../../../img/huesos.jpg");
+    border-radius: 20px; */
+  /*   box-shadow: 0 3px 13px 1px rgba(224, 195, 195, 0.09); /* sombras */
+     @media (max-width: 500px){
+        align-items: center;
+       justify-content: center;
+       width:100%;
+
+    }  
+}
+.favorites{
+    width: 330px;
+    min-height: 430px;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin: 20px;
+    text-align: center;
+    transition: all 0.25s;
+}
+.favorites:hover{
+    transform: translateY(-20px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.7);
+    background-image:linear-gradient(to right, #9e6730 0%, #e8c39e 100%); ;
+}

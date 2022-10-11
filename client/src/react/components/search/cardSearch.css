@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
+img{
+    display: flex;
+    height: 220px; 
+    width: 300px;
+    border-radius: 20px;
+    margin-top: 5px;
+    margin-left: 15px;
+}
+.h12{
+    color: black;
+    font-family: Cookie;
+
+}
+.box-q{
+    display:flex;
+   align-items: center;
+    justify-content: center; 
+    flex-direction:column;
+    line-height: 2px;
+    color: black;
+}
+.box-q button{
+    border-radius: 30px;
+    background-color: transparent;
+    border-color: transparent;
+    font-size: 20px;
+}
+.box-q button:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.7);
+}
+.box-q button:focus{
+    color: rgb(214, 98, 98);
+}
+.box-s{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    line-height:20px;
+    width: 85%;
+    color: black;
+    font-family: Kalam;
+    
+} 
+.weight-s{
+   
+ line-height:1px;
+  align-items:center;
+   font-family: Kalam;
+   margin-top: 10px;
+
+    }
+
+.box-z{
+     margin-top: 20px;
+     line-height:20px;
+    align-items:center;
+     font-family: Kalam;
+    }
+

@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
+
+.nave{
+    display: flex;
+    margin-left: 100px;
+}
+.li{
+    list-style-type: none;
+   
+}
+.li .but{
+    height: 30px;
+    background-image: linear-gradient(to right, #f56dad 0%, #945c1c 100%);
+    border: thick double #f3dbc3 ;
+    border-radius: 15px;
+    color: wheat;
+    font-family: Lobster ;
+    letter-spacing:1px;
+    font-size: 12px;
+}
+.li .but-activo{
+    height: 30px;
+    background-color: #9e6730; 
+    border: thick double #f3dbc3 ;
+    border-radius: 15px;
+    color: wheat;
+    font-family: Lobster ;
+    letter-spacing:1px;
+    font-size: 12px;
+
+}
+.uli{
+    display: flex;
+    justify-content: center;
+   
+}
+.li .but:hover{  
+    transform: translateY(-5px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.7);
+
+}

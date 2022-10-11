@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
+
+.created{
+    position: fixed;
+    z-index: 999;  
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    max-height: 100%;
+    background-color:rgba(27, 26, 26, 0.75) ;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.h1{
+    
+    font-family:"Lobster", cursive ;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    padding-top: 49px;
+    
+}
+.race{
+    display: flex;
+    background-image: url("../../../img/cartoon.png");
+    background-size: 100% 100%;
+    justify-content: center;
+    align-items: center;
+    
+  
+}
+.created-container input{
+    border-radius: 4px;
+    background:#e8c39e;
+    font-size: 18px;
+    font-family:"Cookie";
+    color: rgb(95, 68, 9);
+    border: 1 solid rgb(134, 89, 5);
+    width: 95%;
+     left: 0;
+    padding: 8px;
+    margin-bottom: 1px;
+}
+
+.option{
+    background-color:#e8c39e;
+    border-radius: 5px;
+    font-family: Lobster;
+    letter-spacing:1px;
+}
+
+ .created.open{
+    display: flex;
+    font-size: 20px;
+    font-family:"Cookie";
+} 
+.created.open .created-container{
+    position: relative;
+    padding: 1.2rem;
+    min-width: 320px;
+    max-width: 400px;
+    min-height: 200px;
+    max-height: 800px;
+    overflow-y: auto;
+    overflow-x: auto;
+    background-color:#c57d56;
+    font-size: 20px;
+    font-family:"Cookie";
+  
+    
+/* 
+    background-image: url("../../../img/");
+    background-size: 200%; */
+ 
+}
+.created-close{
+    position: absolute; 
+    top:1rem; /* tanto top como right son para colocarlo en la esquina superior derecha*/
+    right: 1rem;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    background-color:#f89e9c;
+}
+.created-close:hover{
+    background-color:  cornsilk;
+    color: black;
+}
+.enviar{
+    
+    height: 50px;
+    width: 100%;
+    position: relative;
+  /*   overflow: hidden;  */
+    text-decoration: none;
+    letter-spacing: 2px; 
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    font-family: Cookie;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    background-color: cornsilk;
+}
+.enviar:before{
+    content:"♥";
+    position: absolute;
+    top: 0px;
+  left: 0px;
+  width: 0px;
+  height: 100%;
+  background: #f89e9c59;
+  transition: all 1s ease;
+
+
+}
+.enviar:hover::before{
+    width: 100%;
+    
+   
+}
+.eliminar-temp{
+   
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.473);
+    background-color:#e8c39e;
+    font-family: Lobster;
+}
+.eliminar-temp:hover{
+    background-color:#f89e9c;
+   border: 1px solid black;
+}
+
+ 
+
+    
+    
+
+
+
+

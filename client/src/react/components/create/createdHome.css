@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
+
+.contenedor-created{
+    background-image: url("../../../img/imagen3.jpg");
+    background-repeat: repeat;
+    min-height: 100vh;
+    height: 100%;
+    width: 100% !important;
+    
+}
+
+.contenedor-created .bandeja .created-home{
+    display: flex;
+    align-items: center;
+    height: 60%;
+    width: 450px;
+    font-family: Lobster;
+    border: 3px dashed black; 
+    border-radius: 40px;
+
+}
+.contenedor-created .bandeja{
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-around;  
+
+}
+.contenedor-created .bandeja .bandeja-img{
+    display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   
+}
+.h1-img{
+    font-family: Lobster;
+    font-size: 50px;
+    margin-top: 0;
+    letter-spacing: 2px;
+    margin-left: 30px;
+    color: rgb(126, 57, 0);
+   /*  -webkit-text-stroke: 1px white; */
+    text-shadow: 0 2px 3px rgb(255, 255, 255);
+  
+}
+.contenedor-created .bandeja .bandeja-img .imageen{
+    margin-top: 30px;
+    margin-left: 12%;
+    height: 400px;
+    width: 500px;
+}
+
+.created-home .form input{
+    border-radius: 8px;
+    background:#e8c39e;
+    font-size: 20px;
+    font-family:"Cookie";
+    color: rgb(66, 54, 29);
+    border: 1 solid rgb(134, 89, 5);
+    width: 100%;
+     left: 0;
+    padding: 10px;
+    margin-bottom: 8px;
+}
+.created-home .form{
+   margin-left: 10%;
+   margin-top: 10%;
+   margin-bottom: 10%;
+}
+.option{
+    background-color:#e8c39e;
+    border-radius: 5px;
+    font-family: Lobster;
+    letter-spacing:1px;
+}
+.enviar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    height: 50px;
+    width: 100%;
+    position: relative;
+  /*   overflow: hidden;  */ 
+    text-decoration: none;
+    letter-spacing: 2px; 
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    font-family: Cookie;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    background-color: cornsilk;
+}
+.enviar:before{
+    content:"♥";
+    position: absolute;
+    top: 0px;
+  left: 0px;
+  width: 0px;
+  height: 100%;
+  background: #f89e9c59;
+  transition: all 1s ease;
+
+
+}
+.enviar:hover::before{
+    width: 100%;
+    
+   
+}
+.eliminar-temp{
+   
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.473);
+    background-color:#e8c39e;
+    font-family: Lobster;
+}
+.eliminar-temp:hover{
+    background-color:#f89e9c;
+   border: 1px solid black;
+}
+ .bandeja .but-close{
+    margin-left: 100%;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    background-color: cornsilk;
+    border-radius: 5px;
+} 
+.but-close:hover{
+    background-color:#f5221e;
+    
+}

@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+.raza-detail{
+    background-image: url("../../../img/imagen3.jpg");
+    background-repeat: repeat;
+    min-height: 100vh;
+    width: 100% !important;
+}
+
+.raza-detail .details{
+    width: 90%;
+    min-height: 70%;
+    margin-left: 60px;
+    margin-top: 10px;
+    border-radius: 20px;
+    padding-bottom: 10px;
+    font-family: Lobster;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: 0px 0px 25px #222;
+    backdrop-filter: blur(5px);
+    @media screen and (max-width: 480px) {
+        .weight{
+          grid-template-columns: 1fr;
+        }
+      }
+
+}
+.contenido{
+    background-image: url("../../../img/imagen3.jpg"); 
+    border-radius: 20px;
+    margin-top: 10px;
+   
+  
+   
+}
+.raza-detail .details .image-detail{
+    height: 400px;
+    width: 500px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 25px #222;
+}
+.titu{
+    color: black;
+    font-family: Cookie;
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.weight-detail{
+    line-height:1px;
+  align-items:center;
+   font-family: Kalam;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+
+}
+.weight-detail .tit{
+    font-size: 25px;
+
+}
+.height-detail{
+    line-height:1px;
+  align-items:center;
+   font-family: Kalam;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+
+}
+.height-detail .tit{
+    font-size: 25px;
+   
+}
+.span{
+    line-height:1px;
+  align-items:center;
+   font-family: Kalam;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+
+}
+.span .tit{
+    font-size: 25px;
+}
+
+.temperaments{
+    line-height:1px;
+  align-items:center;
+   font-family: Kalam;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   line-height:15px;
+
+}
+.temperaments .tit{
+    font-size: 25px;
+ 
+
+}

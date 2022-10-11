@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
+
+
+.errores{
+    position: fixed;
+    z-index: 999;  
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    max-height: 100%;
+    background-color:rgba(27, 26, 26, 0.75) ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.errores.cerrar{
+    display: none;
+}
+.error{
+    background-color: rgb(241, 206, 141);
+    height: 350px;
+    width: 350px;
+    border-radius: 40px;
+    border: 5px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.error img{
+    height: 40%;
+    width: 40%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+   
+}
+.error span{
+    font-family: Lobster;
+    font-size: 35px;
+
+}
+.buttons{
+   display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.buttons .but-cerrar{
+   
+    height: 30px;
+    border-radius: 10px;
+     width: 50px;
+     margin-left: 70%;
+
+     font-size: 15px;
+     border: 3px solid  rgb(247, 68, 112);
+     background-color: rgb(243, 106, 140);
+}

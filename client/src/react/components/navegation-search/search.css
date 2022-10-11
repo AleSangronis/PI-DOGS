@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
+
+.conten .boton-search{
+    background-image: linear-gradient(to right, #9e6730 0%, #e8c39e 100%);
+   width: 7%;
+   height: 60%;
+   padding: 4px;
+    position: absolute; 
+    right: 0.5rem;
+    top:0.1rem;
+    border-radius: 10px;
+    color:rgb(245, 238, 209);
+    border: 1px solid transparent;
+    
+    font-family: Cookie;
+    font-size: 20px;
+    letter-spacing:1px;
+}
+.boton-search:before{
+    content:"";
+    position: absolute;
+    top: 0px;
+  left: 0px;
+  width: 0px;
+  height: 100%;
+  background: #ffffff59;
+  transition: all 1s ease;
+  border-radius: 10px;
+
+}
+.boton-search:hover::before{
+    width: 100%;
+
+   
+    
+   
+}
+
+
+ 
+.conten .input{
+    background-color: transparent;
+    border: 1px solid white;
+     width: 10%;
+    padding: 5px;
+     position: absolute; 
+     right:6.4rem;
+     top:0.2rem; 
+     border-radius: 5px;
+     color: rgb(255, 255, 255);
+     font-family:Cookie ;
+     font-size: 20px;
+
+
+}
+.conten .input::placeholder{
+    color: rgb(245, 238, 209);
+    font-family:Cookie ;
+    font-size: 20px;
+}
+.conten .input:focus{
+    outline: none;
+}
