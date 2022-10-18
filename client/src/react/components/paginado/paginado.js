@@ -9,18 +9,15 @@ export default function Paginado({page, cantidadDogs, dogs, NextPage,PreviewButt
     }
 
     return (
-        <nav className="nave"> 
-            <ul className="uli">
-                <li className="li"><button className="but" onClick={()=>PreviewButton()}>Preview</button></li>
+        <>
+        
+              <button className="but" onClick={()=>PreviewButton()}>Preview</button>
                 {pageNumbers && pageNumbers.map(el =>(
-                    <li key={el} className="li">
-                          <button className={page===el ? "but-activo":"but"} onClick={()=>NextPage(el)}><strong>{el}</strong></button>
-                    </li>
+                <button key={el} className={page===el ? "but-activo":"but"} onClick={()=>NextPage(el)}><strong>{el}</strong></button>
                 ))}
-               <li className="li"> <button className="but" onClick={()=>NextPage()} >Next</button></li>
-            </ul>
-        </nav>
-
+                <button className="but" onClick={()=>NextPage()} >Next</button>
+         
+</>
     )
 
 

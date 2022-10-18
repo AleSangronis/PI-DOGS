@@ -1,10 +1,16 @@
-export const validate=(input)=>{
+
+export const validate=(input, filter)=>{
     const error={}
+
     if(!input.name){
     error.name="Username is required"    
     }
     if(!/^[A-Za-z\s]+$/.test(input.name)){
         error.name="Username is invalid"
+    }
+    if(input.name && filter.length>0){
+        error.name="Username already exists"
+
     }
      if(!input.weightmin){
         error.weightmin="Weight is required"

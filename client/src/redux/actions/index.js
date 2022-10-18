@@ -53,7 +53,7 @@ export function getDogsById(id){
 export function postDog(body){
     return async function(dispatch){
         const respuesta=await axios.post(url_dogs, body)
-        console.log(respuesta)
+  
         return respuesta
     }
 
@@ -62,7 +62,7 @@ export function postDog(body){
 export function borrareDog(id){
     return async function(dispatch){
         const respuesta= await axios.delete(`${url_dogs}/${id}`)
-        console.log(respuesta)
+       
         return respuesta
     }
 
@@ -97,23 +97,23 @@ export function filterRaza(value){
         payload:value
     }
 };
-export function filterAlfabetico(value){
+export function filterOrdenamiento(value){
     return{
-        type:"FILTER_ALFABETICO",
+        type:"FILTER_ORDENAMIENTO",
         payload:value
     }
 };
-export function filterPeso(value){
-    return{
-        type:"FILTER_PESO",
-        payload:value
-    }
-};
+
 export function DeleteErrores(){
     return{
         type:"DELETE_ERRORES"
     }
 }
 
+export function pageReload(){
+    return{
+        type:"RELOAD"
+    }
+}
 
 

@@ -1,16 +1,32 @@
 import "./home.css"
 import React from "react"
-import { Link } from "react-router-dom"
+
+ import { Link } from "react-router-dom" 
+
 export default function LandingPage(){
     return(
+       
        <div className="fondo">
-        <Link to="/dogs" style={{textDecoration: 'none'}}>
-        <div id="btn">
-            <span >Getting started</span>
-            <div id="circle"></div>
-            </div>
-            </Link>
+        <div className="btn-contenedor">
+         <Link to="/dogs" style={{textDecoration: 'none'}}> 
+        <div className="btn1">
+        <span>Getting started</span>
+        <div id="circle"></div>
+        </div>
+        </Link>  
+        <a href="https://www.linkedin.com/in/alexandra-carolina-araujo-sangronis-4568a8154" > 
+        <div className="btn2">
+        <span>
+        Linkedln
+        </span>
+        <div id="circle"></div>
+        </div>
+       </a>
+       
+  
        </div> 
+       </div>
+       
     )
 
 }

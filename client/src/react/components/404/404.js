@@ -15,7 +15,7 @@ export default function PaginaDefault(){
                 <h1 className="h1-error">404 Page Not Found</h1>
                 <label>Looks like you've followed a broken link or entered a URL that doesn't exist on this site.</label>  
                 <br/>
-                <Link to="/dogs" /* style={{ textDecoration: 'none'}} */ >
+                <Link to="/dogs"  >
                 <label>Press here to return </label>
                 </Link>
                 </div>

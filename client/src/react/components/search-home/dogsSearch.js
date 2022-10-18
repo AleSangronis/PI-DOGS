@@ -29,7 +29,7 @@ export default function DogsSearchs(){
         setPage(page-8)
         setCantidadDogs(cantidadDogs-8) 
     }
-console.log(busqueda)
+
 
     return (
         <div className="search-home">
@@ -38,14 +38,14 @@ console.log(busqueda)
             <div className="titulo">
             <h1 className="search-h1"> Aun no tienes busquedas</h1> 
             </div>: 
-             <div className="titulo"><h1 className="search-h1">Your Searchs Dogs</h1></div>}
-               <div className="botones">
+            <div className="titulo"><h1 className="search-h1">Your Searchs Dogs</h1></div>}
+            <div className="botones">
             {page!==0 && <button onClick={previewPage}>Preview</button> }
             {busqueda.length>8  && <button onClick={nextPage}>Next</button>}
             </div>
            <div className="container-search"> 
-       {searchPage && searchPage.map((el)=>{
-        return (
+           {searchPage && searchPage.map((el)=>{
+            return (
             <div key={key++} className="searchs">
             <CardSearch id={el.id} 
             img={el.image? el.image: el.reference_image_id ? `https://cdn2.thedogapi.com/images/${el.reference_image_id}.jpg` : PerritoDefault}
@@ -56,9 +56,9 @@ console.log(busqueda)
             />
             </div>
             
-        )})}
-        </div>
-   {busqueda.length!==0 && <button className="clear" onClick={borrar}>Borrar Historial</button>}
+            )})}
+            </div>
+            {busqueda.length!==0 && <button className="clear" onClick={borrar}>Borrar Historial</button>}
         
         </div>
     )

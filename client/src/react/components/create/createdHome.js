@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from  "react-redux";
 import {validate} from "./validate.js"
-import { getTemperaments, postDog } from "../../../redux/actions/index.js"
+import { getTemperaments, postDog, getDogs } from "../../../redux/actions/index.js"
 import "./createdHome.css"
 import { Link } from "react-router-dom";
 import Navegation from "../navegation/navegation.js";
@@ -27,28 +27,28 @@ export default function CreatedHome(){
     },[dispatch]) 
 
     const temperamentos=useSelector(state=>state.dogsTemperaments)
+    const dogs=useSelector(state=>state.dogsLoaded)
     const [state,setState]=React.useState(stateInicial)
     const [error,setError]=React.useState({})
     const [creado,setCreado]=React.useState(stateCreado)
-    let key=790797777;
+   
+    
 
     const handleOnChange=(e)=>{
         setState({...state, [e.target.name]:e.target.value})
     }
-    const enviar=(e)=>{
+    const enviar=async (e)=>{
         e.preventDefault()
-        let errors=validate(state)
-        setError(errors)
         if(Object.keys(error).length===0){
         dispatch(postDog(state))
+        dispatch(getDogs())
         setState(stateInicial) 
         setCreado(true)
         }}
-
-
      const handleOnBlur=(e)=>{
-        let errors=validate(state)
-            setError(errors) 
+        let filter=dogs.filter(el=>el.name===state.name)
+        let errors=validate(state, filter)
+            setError(errors)
     } 
     const handleSelect=(e)=>{
         if(!state.temperaments?.includes(e.target.value)){
@@ -72,94 +72,98 @@ export default function CreatedHome(){
    
     
     return (
-        <div key={key++} className="contenedor-created" >
+        <div className="contenedor-created" >
             <Navegation titulo={titulo}/>
-            <div className="bandeja">
-                <div className="bandeja-img">
+            <div  className="bandeja">
+                <div  className="bandeja-img">
                 <img className="imageen" src={Create} alt="crear"/>
                 <h2 className="h1-img">Created Race</h2>
                 </div>
                 <div className="created-home"> 
-            <div key={key++} className="form"  > 
+            <div className="form"> 
             <Link to="/dogs"> 
                 <button onClick={close} className="but-close">❌</button> 
                 </Link>
                 <div>
-                   <input /* className="input" */ type="text"
+                   <input type="text"
                    autoComplete="off"
                    name="name"
+                   key="name"
                    value={state.name}
                    onChange={handleOnChange}
                    onBlur={(e)=>handleOnBlur(e)}
                    placeholder="Write Breed Name"/>
                    { state.name && error.name && (
-                 <p className="danger">{error.name}</p>)}
+                 <p>{error.name}</p>)}
                 </div>
                 
-                <div >
-                
+                <div>
                    <input type="text"
                    autoComplete="off"
                    name="weightmin"
+                   key="weightmin"
                    value={state.weightmin}
                    onChange={handleOnChange}
                    onBlur={(e)=>handleOnBlur(e)}
                    placeholder="Write Weight Min"/>
                    {state.weightmin && error.weightmin && (
-                 <p className="danger">{error.weightmin}</p>)}
+                 <p>{error.weightmin}</p>)}
                  
                    
-                   {/* <label>Weight max   </label> */}
                    <input type="text"
                    autoComplete="off"
                    name="weightmax"
+                   key="weightmax"
                    value={state.weightmax}
                    onChange={handleOnChange}
                    onBlur={(e)=>handleOnBlur(e)}
                    placeholder="Write Weight Max"/>
                    {state.weightmax && error.weightmax && (
-                 <p className="danger">{error.weightmax}</p>)}
+                 <p>{error.weightmax}</p>)}
                 </div>
                 
                 <div >
-                {/* <label>Height min   </label> */}
+          
                    <input type="text"
                    name="heightmin"
+                   key="heightmin"
                    autoComplete="off"
                    value={state.heightmin}
                    onChange={handleOnChange}
                     onBlur={(e)=>handleOnBlur(e)} 
                    placeholder="Write Height Min"/>
                    {state.heightmin && error.heightmin && (
-                 <p className="danger">{error.heightmin}</p>)}
+                 <p >{error.heightmin}</p>)}
                      <br/>
-               {/*     <label>Height max  </label> */}
+
                    <input type="text"
                    autoComplete="off"
                    name="heightmax"
+                   key="heightmax"
                    value={state.heightmax}
                    onChange={handleOnChange}
-                    onBlur={(e)=>handleOnBlur(e)} 
+                   onBlur={(e)=>handleOnBlur(e)} 
                    placeholder="Write Height Max"/>
                    {state.heightmax && error.heightmax && (
-                 <p className="danger">{error.heightmax}</p>)}
+                 <p >{error.heightmax}</p>)}
                 </div>
                 
                 <div>
-                    {/* <label>Life span  </label> */}
                     <input type="text"
                     autoComplete="off"
                     name="life"
+                    key="life"
                     value={state.life}
                     onChange={handleOnChange} 
                     placeholder="Write Life Span"/> 
                 </div>
                
                 <div>
-                   {/*  <label>Image   </label> */}
+              
                     <input type="text"
                     autoComplete="off"
                     name="image"
+                    key="image"
                     value={state.image}
                      onChange={handleOnChange} 
                     placeholder="Write Image Url"/> 
@@ -167,14 +171,14 @@ export default function CreatedHome(){
                 <div>
                   
                   <label>Select Temperaments   </label>
-                   <select  className="option"  onChange={(e)=>handleSelect(e)}>
+                   <select key="temperaments" className="option"  onChange={(e)=>handleSelect(e)}>
                     {temperamentos && temperamentos.map((el)=>(
-                        <option value={el.name}>{el.name}</option>
+                        <option key={el.name} value={el.name}>{el.name}</option>
                     )) }
                     </select> 
                     <p>Temperamentos Seleccionados: </p>
                     {state.temperaments && 
-                    <div>
+                    <div key="temperamentos-seleccionados">
                     {state.temperaments.map(el=>(
                        <label key={el} name={el}>{el} <button  className="eliminar-temp"  value={el} type="button" onClick={deleteTemp}>x</button> </label>
                     ))}
@@ -184,9 +188,6 @@ export default function CreatedHome(){
                 
                <button onClick={enviar} className="enviar" 
                disabled={!state.name || !state.weightmax || !state.weightmin || !state.heightmax || !state.heightmin || (Object.keys(error).length!==0)? true :false}>Create</button>
-               
-               
-
             </div>
             </div>
            

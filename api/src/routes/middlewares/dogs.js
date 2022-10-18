@@ -1,16 +1,16 @@
 const { Router } = require('express');
 const router = Router();
-const { getApi,getId,postDog,deleteDog }=require('../controllers/api-dogs.js')
+const { getApi,getId,postDog,deleteDog,udpateDog }=require('../controllers/api-dogs.js')
 
   router.get("/", async(req,res)=>{
     const {name}=req.query
            try{ 
             let apiUnion=await getApi(name)
-            if(apiUnion.length>0) return res.json(apiUnion)
+            if(apiUnion.length>0) return res.status(200).json(apiUnion)
             else {
                 throw new Error("Raza inexistente") }}
-    catch(e){
-        res.status(404).json("Raza inexistente")
+           catch(e){
+           res.status(404).json("Raza inexistente")
     }} )
 
     router.get("/:idRaza",async(req,res)=>{
@@ -47,9 +47,18 @@ const { getApi,getId,postDog,deleteDog }=require('../controllers/api-dogs.js')
             res.status(404).send("no se encontro el perrito")
         }})
 
+        router.put("/:id",async(req,res)=>{
+            const {id}=req.params
+            const {name, weightmax,weightmin,heightmax,heightmin,life,image,temperaments}=req.body
+             udpateDog(id,name)
+            .then(respuesta=>{
+              return res.status(202).json(respuesta)
+            })
+            .catch(e=>res.status(404).json(e))  
+            })
+
     router.get("*", (req,res)=>{
         res.send("Pagina not found")
-
     })
 
     

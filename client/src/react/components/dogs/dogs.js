@@ -2,11 +2,11 @@ import React from "react";
 import "./dogs.css"
 import { Link } from 'react-router-dom';
 import { addFavorites } from "../../../redux/actions";
-import { borrareDog, getDogs } from "../../../redux/actions/index"
+import { borrareDog , getDogs  } from "../../../redux/actions/index"
 import { useDispatch } from "react-redux";
 
 
-export default function Dogs({ id, name, weightMetric, weightImperial, heightMetric, heightImperial, life_span, image, temperaments, createInDb}){
+export default function Dogs({ id, name, weightMetric, weightImperial, image, temperaments, createInDb}){
     
     const dispatch=useDispatch()
     const handleOnClick=(e)=>{
@@ -15,8 +15,9 @@ export default function Dogs({ id, name, weightMetric, weightImperial, heightMet
     }
     const deleteDog=(e)=>{
         dispatch(borrareDog(id))
-        dispatch(getDogs())
+         dispatch(getDogs()) 
     }
+    
 
     return (
         <> <img src={image} alt={name} />  
@@ -27,7 +28,10 @@ export default function Dogs({ id, name, weightMetric, weightImperial, heightMet
         <div className="box">
         <div className="weight">
         <div><strong>Weight</strong></div>
-         <p>Metric: {weightMetric} kg<p>Imperial: {weightImperial} lb</p> </p>
+        <div>
+         <p>Metric: {weightMetric} kg </p>
+         <p>Imperial: {weightImperial} lb</p>
+         </div>
         </div> 
         <div className="box-a">
         <div><strong>Temperaments</strong></div>
@@ -37,6 +41,7 @@ export default function Dogs({ id, name, weightMetric, weightImperial, heightMet
         <div>
         <button onClick={handleOnClick}>❤</button>
         {createInDb==="true" && <button onClick={deleteDog}>🗑️</button> }
+       
         </div>
         </div>
     

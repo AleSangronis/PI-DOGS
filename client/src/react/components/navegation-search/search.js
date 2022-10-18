@@ -6,7 +6,8 @@ import {getDogsName} from "../../../redux/actions/index"
 import Errores from "../errores/errores"
 
 
-export default function Search(){
+
+export default function Search({seteo}){
     const [state, setState]=React.useState("")
     const dispatch=useDispatch()
     const error=useSelector(state=>state.dogsError)
@@ -15,25 +16,27 @@ export default function Search(){
     const handleonChange=(e)=>{
         setState(e.target.value)
     }
-    const handeonSubmit=(e)=>{
+    const handeonSubmit= async(e)=>{
         if(state){
         e.preventDefault()
-     dispatch(getDogsName(state))
-     setState("")
+        await dispatch(getDogsName(state))
+        seteo()  
+        setState("")
         }     
     }
    
     return (
-        <div className="conten">
+        <>
            
             <input className="input" onChange={handleonChange}
             type="text" name="texto" placeholder='Write Breed Name' value={state} autoComplete="off"/>
 
            <button onClick={handeonSubmit}
             className="boton-search"><label>Search</label></button> 
+         
             <br></br>
             {error.name  && <Errores name={error.name} />}
             
-        </div>
+        </>
     )
 }

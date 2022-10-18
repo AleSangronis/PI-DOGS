@@ -1,10 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
 
-.conten .boton-search{
+
+.boton-search{
     background-image: linear-gradient(to right, #9e6730 0%, #e8c39e 100%);
    width: 7%;
-   height: 60%;
+   height: 90%;
    padding: 4px;
     position: absolute; 
     right: 0.5rem;
@@ -12,10 +13,10 @@
     border-radius: 10px;
     color:rgb(245, 238, 209);
     border: 1px solid transparent;
-    
     font-family: Cookie;
     font-size: 20px;
     letter-spacing:1px;
+    
 }
 .boton-search:before{
     content:"";
@@ -32,14 +33,11 @@
 .boton-search:hover::before{
     width: 100%;
 
-   
-    
-   
 }
 
 
  
-.conten .input{
+.input{
     background-color: transparent;
     border: 1px solid white;
      width: 10%;
@@ -51,14 +49,80 @@
      color: rgb(255, 255, 255);
      font-family:Cookie ;
      font-size: 20px;
+    
 
 
 }
-.conten .input::placeholder{
+.input::placeholder{
     color: rgb(245, 238, 209);
     font-family:Cookie ;
     font-size: 20px;
 }
-.conten .input:focus{
+.input:focus{
     outline: none;
 }
+
+
+ @media (max-width: 900px){
+  
+    .input{
+        display: flex;
+        right: 4.5rem;
+        width: 25%; 
+    }  
+ }
+ @media (max-width: 750px){
+  
+    .input{
+        display: flex;
+        right: 3.1rem;
+        width: 10%; 
+    }  
+ }
+ @media (max-width: 600px){
+    .boton-search{
+        margin-top: 23%;
+        height: 20%;
+        width: 15%;
+    }
+    .input{
+        display: flex;
+        right: 6rem;
+        margin-top: 23%;
+        width: 15%;
+    }  
+ }
+   @media (max-width: 490px){
+    .boton-search{
+        margin-top: 25%;
+        height: 25%;
+        width: 20%;
+    }
+    .input{
+        display: flex;
+        right: 0.4rem;
+        margin-top: 17%;
+        width: 20%;
+    }  
+ }
+ @media (max-width: 450px){
+    .boton-search{
+        margin-top: 29%;
+        height: 25%;
+        width: 20%;
+    }
+    .input{
+        display: flex;
+        right: 0.4rem;
+        margin-top: 20%;
+        width: 20%;
+    } 
+ } 
+ @media (max-width: 380px){
+    .boton-search{
+        display: none;
+    }
+    .input{
+        display: none;
+    } 
+ } 

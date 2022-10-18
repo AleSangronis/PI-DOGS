@@ -21,7 +21,6 @@ function App() {
      <Route exact path="/dogs/:idRaza" component={DetailsDogs}/>
      <Route exact path="/dogs/created/new" component={createdHome}/>  
      <Route exact path="/dogs/result/search"><DogsSearchs/></Route>
-
      <Route exact path="/dogs/select/favs" component={Favorites} />
      <Route path="/"><PaginaDefault/></Route>  
      </Switch> 

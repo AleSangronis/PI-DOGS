@@ -2,6 +2,8 @@ const axios = require('axios').default;
 const  { Dog, Temperament}  = require('../../bd/db.js');
 const { Op } = require('sequelize');
 
+ const { validate } = require("../validate/validate.js") 
+
 const {
     API_KEY, API_URL
   } = process.env;
@@ -24,16 +26,15 @@ module.exports={
             let datos={
                 "id":el.id,
                 "name":el.name,
-                "weight":el.weight,
+                "weight":validate(el.weight),
                 "height":el.height,
                 "life_span":el.life_span,
                 "temperaments":el.temperament,
                 "image":el.image,
-                "createdInDb":el.createdInDb
-
             }
             return datos
         })
+       
         let union= await datosApiNeed.concat(datosBd)
         return union  
        
@@ -51,8 +52,21 @@ module.exports={
                     attributes:[],
                 }
         }})
-        const union=await datosNameApi.data.concat(datosNameBd)
-      
+        let datosApiNeedName=await datosNameApi.data.map(el=>{
+
+             let datos={
+                 "id":el.id,
+                 "name":el.name,
+                 "weight":validate(el.weight),
+                 "height":el.height,
+                 "life_span":el.life_span,
+                 "temperaments":el.temperament,
+                 "reference_image_id":el.reference_image_id,
+             }
+             return datos
+         })
+
+        let union=await datosApiNeedName.concat(datosNameBd)
             return union
        
         }},
@@ -64,7 +78,7 @@ module.exports={
                         let datos={
                             "id":el.id,
                             "name":el.name,
-                            "weight":el.weight,
+                            "weight":validate(el.weight),
                             "height":el.height,
                             "life_span":el.life_span,
                             "temperaments":el.temperament,
@@ -106,11 +120,11 @@ module.exports={
                 life_span:life,
                 image,
             });
+            
             if(temperaments){
                 let temperamentsArray=await Temperament.findAll({
                     where:{ name: temperaments}})
              await creacion.addTemperament(temperamentsArray)
-
             }
             return creacion
         },
@@ -129,7 +143,17 @@ module.exports={
                 else{
                     throw new Error("no existe id en bd")
                 }},
-        
-       
-    
+
+        udpateDog:async(id, name/* , weightmax,weightmin,heightmax,heightmin,life,image,temperaments */)=>{
+            
+            try{
+                await Dog.update({name:name},{
+                where:{id:id}
+            })
+            return "Perrito actualizado"
+        }
+        catch(e){
+            throw new Error("ocurrio un error")
+        }
+        } 
 };

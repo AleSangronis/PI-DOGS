@@ -13,9 +13,8 @@
     background-image: url("../../../img/imagen3.jpg");
     background-repeat: repeat;
     min-height: 100vh;
- 
     width: 100% !important;
-
+   
 }
 
 .dogs .body-dogs{
@@ -23,8 +22,13 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 90px;
+    margin-right: 90px;
+    @media (max-width: 300px){
+        align-items: center;
+       justify-content: center;
+       width:100%;
+    } 
 }
 
 .dogs .body-dogs .div-select{
@@ -81,17 +85,17 @@
     display: flex;
     flex-wrap: wrap;
     margin: auto;
-   /*  align-items: center; */
     justify-content: center;
-    /* background-image: url("../../../img/huesos.jpg");
-    border-radius: 20px; */
-  /*   box-shadow: 0 3px 13px 1px rgba(224, 195, 195, 0.09); /* sombras */
-     @media (max-width: 500px){
+     @media (max-width: 300px){
         align-items: center;
        justify-content: center;
        width:100%;
-
     }  
+}
+.container .dogs-h1{
+    color: #9e6730;
+    font-family: Lobster ;
+    letter-spacing:2px;
 }
 .dogs .body-dogs .reload{
     display: flex;
@@ -117,19 +121,49 @@
     min-height: 430px;
     border-radius: 8px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
+   /*  overflow: hidden; */
     margin: 20px;
     text-align: center;
     transition: all 0.25s;
+    @media (max-width: 300px){
+       align-items: center;
+       justify-content: center;
+       width:100%;
+       height:100%;
+    }   
 }
 .contenedor:hover{
     transform: translateY(-20px);
     box-shadow: 0 12px 16px rgba(0, 0, 0, 0.7);
-    background-image:linear-gradient(to right, #9e6730 0%, #e8c39e 100%); ;
+    background-image:linear-gradient(to right, #9e6730 0%, #e8c39e 100%); 
+    @media (max-width: 300px){
+        align-items: center;
+        justify-content: center;
+        width:100%;
+        height:100%;
+     }   
 }
 .dogs .paginado{
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center; 
     margin-top: 20px;
     flex-wrap: wrap;
-   
+    width: 98%;
+    
+    @media (max-width: 500px){
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    } 
 }
+@media (max-width: 300px){
+
+  .body-dogs, .contenedor{  align-items: center;
+   justify-content: center;
+   width:98%;
+}
+} 

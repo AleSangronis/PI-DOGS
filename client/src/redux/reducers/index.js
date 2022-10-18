@@ -6,7 +6,9 @@ const initialState={
     dogsSearchDetail:[],
     dogsLoadedCoped:[],
     dogsTemperaments:[],
+    dogsLoadedCopedTemp:[],
     dogsError:{},
+    dogsLanding:false
 }
 function rootReducer(state=initialState,action){
     switch(action.type){
@@ -14,7 +16,8 @@ function rootReducer(state=initialState,action){
         return{
             ...state, 
             dogsLoaded:action.payload, 
-            dogsLoadedCoped:action.payload
+            dogsLoadedCoped:action.payload,
+            dogsLoadedCopedTemp:action.payload
         }
         case "GET_TEMPERAMENTS":
             return {
@@ -26,11 +29,9 @@ function rootReducer(state=initialState,action){
         if(action.payload!=="Raza inexistente"){
             let datos=action.payload
             datos=state.dogsSearch.concat(datos)
-          let dogs=datos.map(item=>{
-           return [item.id,item]
-          })
-         let dogsArr=new Map(dogs)
-         unicos=[...dogsArr.values()]
+          let dogs=datos.map(item=>{ return [item.id,item] })
+          let dogsArr=new Map(dogs)
+          unicos=[...dogsArr.values()]
          }
       
             return{
@@ -80,19 +81,25 @@ function rootReducer(state=initialState,action){
             }
 
         case "FILTER_TEMPERAMENTS":
-        let allDogs=state.dogsLoadedCoped
-        const filterTemperaments=action.payload === "All" ? allDogs: allDogs.filter((el)=>el.temperaments?.includes(action.payload))
+         let allDogs=state.dogsLoadedCoped 
+         const filterTemperaments=action.payload === "All" ? allDogs: allDogs.filter((el)=>el.temperaments?.includes(action.payload))
+         let array=[]
+         for(let i=0; i<allDogs.length;i++){
+            if(allDogs[i].createdInDb){
+                 let nuew=allDogs[i].temperaments.filter(el=>el.name.includes(action.payload)) 
+                if(nuew.length>0){
+                    array.push(allDogs[i])
+                }}}
             return {
-                 ...state , dogsLoaded:filterTemperaments
+                 ...state , dogsLoaded:filterTemperaments.concat(array) , dogsLoadedCopedTemp:filterTemperaments.concat(array)
                 }
 
         case "FILTER_RAZA":
-        let allRazas=state.dogsLoadedCoped
+        let allRazas=state.dogsLoadedCopedTemp
         let filterRaza=action.payload==="created"? allRazas.filter((el)=>el.createdInDb) : allRazas.filter((el)=>!el.createdInDb)
         return {
             ...state,
             dogsLoaded: action.payload ==="All" ? allRazas : filterRaza,
-            
         }
         case "POST_DOGS":
         return{
@@ -102,44 +109,49 @@ function rootReducer(state=initialState,action){
         return{
             ...state
         }
-        case "FILTER_ALFABETICO":
-           let ordenamiento= action.payload==="asc"? state.dogsLoaded.sort((a,b)=>{
-            if(a.name.toLowerCase() > b.name.toLowerCase()){
-                return 1;
+        case "FILTER_ORDENAMIENTO":
+            let ordenamiento;
+
+            if(action.payload==="asc"){
+                ordenamiento=state.dogsLoaded.sort((a,b)=>{
+                    if(a.name.toLowerCase() > b.name.toLowerCase()){
+                        return 1;
+                    }
+                    if(b.name.toLowerCase() > a.name.toLowerCase()){
+                        return -1
+                    }
+                    return 0; })
             }
-            if(b.name.toLowerCase() > a.name.toLowerCase()){
-                return -1
+           else if(action.payload==="desc"){
+                ordenamiento=state.dogsLoaded.sort((a,b)=>{
+                        if(a.name.toLowerCase() > b.name.toLowerCase()){
+                            return -1}
+                        if(b.name.toLowerCase() > a.name.toLowerCase()){
+                            return 1
+                        }
+                        return 0; })
             }
-            return 0; }) :state.dogsLoaded.sort((a,b)=>{
-                if(a.name.toLowerCase() > b.name.toLowerCase()){
-                    return -1}
-                if(b.name.toLowerCase() > a.name.toLowerCase()){
-                    return 1
-                }
-                return 0;
-            })
+
+            else if(action.payload==="p_desc"){
+                ordenamiento=state.dogsLoaded.sort((a,b)=>parseInt(b.weight.metric)-parseInt(a.weight.metric))
+
+            }
+           else if(action.payload==="p_asc"){
+                ordenamiento=state.dogsLoaded.sort((a,b)=>parseInt(a.weight.metric)-parseInt(b.weight.metric))
+
+            }
+
+
+           
             return{
                 ...state, dogsLoaded:ordenamiento
             }
-            case "FILTER_PESO":
-                let peso= action.payload==="asc"? state.dogsLoaded.sort((a,b)=>{
-                 if(parseInt(a.weight.metric.slice(0,2).trim()) > parseInt(b.weight.metric.slice(0,2).trim())){
-                     return 1;
-                 }
-                 if(parseInt(b.weight.metric.slice(0,2).trim()) > parseInt(a.weight.metric.slice(0,2).trim())){
-                     return -1
-                 }
-                 return 0; }) :state.dogsLoaded.sort((a,b)=>{
-                     if(parseInt(a.weight.metric.slice(0,2).trim()) > parseInt(b.weight.metric.slice(0,2).trim())){
-                         return -1}
-                     if(parseInt(b.weight.metric.slice(0,2).trim()) > parseInt(a.weight.metric.slice(0,2).trim())){
-                         return 1
-                     }
-                     return 0;
-                 })
-                 return{
-                     ...state, dogsLoaded:peso
-                 }
+          
+
+            case "RELOAD":
+                return{
+                    ...state, dogsLanding:!state.dogsLanding
+                }
             
         
         default:

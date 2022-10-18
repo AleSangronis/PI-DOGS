@@ -1,7 +1,7 @@
  import React from "react";
 import { useSelector, useDispatch } from  "react-redux";
 import {validate} from "./validate_created.js"
-import { getTemperaments, postDog } from "../../../redux/actions/index.js"
+import { getTemperaments, postDog, getDogs } from "../../../redux/actions/index.js"
 import "./created.css"
 import { Link } from "react-router-dom";
 
@@ -24,6 +24,7 @@ export default function Created({ isOpen, isClose }){
     const temperamentos=useSelector(state=>state.dogsTemperaments)
     const [state,setState]=React.useState(stateInicial)
     const [error,setError]=React.useState({})
+    const dogs=useSelector(state=>state.dogsLoaded)
 
     let key=1235445
 
@@ -31,16 +32,18 @@ export default function Created({ isOpen, isClose }){
         setState({...state, [e.target.name]:e.target.value})
     }
     const enviar=(e)=>{
-        let errors=validate(state)
-        setError(errors)
+        e.preventDefault()
         if(Object.keys(error).length===0){
         dispatch(postDog(state))
-        setState(stateInicial) 
+        setState(stateInicial)
+        dispatch(getDogs())
+
         }}
 
 
      const handleOnBlur=(e)=>{
-        let errors=validate(state)
+        let filter=dogs.filter(el=>el.name===state.name)
+        let errors=validate(state,filter)
             setError(errors) 
     } 
     const handleSelect=(e)=>{
@@ -70,8 +73,7 @@ export default function Created({ isOpen, isClose }){
             <h2 className="h1">Created Race</h2>
             </div>
                 <div className="form">
-                   {/* <label>Name race   </label> */}
-                   <input /* className="text" */ type="text"
+                   <input  type="text"
                    autoComplete="off"
                    name="name"
                    value={state.name}
@@ -95,7 +97,6 @@ export default function Created({ isOpen, isClose }){
                  <p className="danger">{error.weightmin}</p>)}
                  
                    <br/>
-                   {/* <label>Weight max   </label> */}
                    <input type="text"
                    autoComplete="off"
                    name="weightmax"
@@ -108,7 +109,7 @@ export default function Created({ isOpen, isClose }){
                 </div>
                 
                 <div>
-                {/* <label>Height min   </label> */}
+              
                    <input type="text"
                    name="heightmin"
                    autoComplete="off"
@@ -119,7 +120,7 @@ export default function Created({ isOpen, isClose }){
                    {state.heightmin && error.heightmin && (
                  <p className="danger">{error.heightmin}</p>)}
                      <br/>
-               {/*     <label>Height max  </label> */}
+               
                    <input type="text"
                    autoComplete="off"
                    name="heightmax"
@@ -132,7 +133,7 @@ export default function Created({ isOpen, isClose }){
                 </div>
                 
                 <div>
-                    {/* <label>Life span  </label> */}
+              
                     <input type="text"
                     autoComplete="off"
                     name="life"
@@ -142,7 +143,7 @@ export default function Created({ isOpen, isClose }){
                 </div>
                
                 <div>
-                   {/*  <label>Image   </label> */}
+                 
                     <input type="text"
                     autoComplete="off"
                     name="image"
@@ -155,7 +156,7 @@ export default function Created({ isOpen, isClose }){
                   <label>Select Temperaments   </label>
                    <select className="option" onChange={(e)=>handleSelect(e)}>
                     {temperamentos && temperamentos.map((el)=>(
-                        <option value={el.name}>{el.name}</option>
+                        <option key={el.name} value={el.name}>{el.name}</option>
                     )) }
                     </select> 
                     <p>Temperamentos Seleccionados: </p>

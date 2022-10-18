@@ -3,29 +3,26 @@ import "./navigation.css"
 import Search from "../navegation-search/search.js"
 import { Link } from "react-router-dom"
 
-export default function Navegation({titulo}){
+export default function Navegation({titulo, seteo}){
     return (
         <div className="navega">
-            <p className="p">Dogs Place<p className="cor">❤</p></p>
-        <nav className="menu">
-        <ol>
-                
+      <p className="p" >Dogs Place</p> 
+        
                <Link to="/dogs" style={{textDecoration: 'none' }}>
-                <li className={titulo==="DogsHome"? "li-activo" :"li"}> Home </li>
+                <button className={titulo==="DogsHome"? "li-activo" :"li"}> Home </button>
                </Link > 
                <Link to="/dogs/select/favs" style={{textDecoration: 'none' }}>
-                <li className={titulo==="Favorites"? "li-activo" :"li"}>Your Favorites</li>
+                <button className={titulo==="Favorites"? "li-activo" :"li"}>Your Favorites</button>
                 </Link>
                 <Link to="/dogs/result/search" style={{textDecoration: 'none' }}>
-                <li className={titulo==="DogsSearchs"? "li-activo" :"li"} > Your Searchs</li>
+                <button className={titulo==="DogsSearchs"? "li-activo" :"li"} > Your Searchs</button>
                 </Link>
                 <Link to="/dogs/created/new" style={{textDecoration: 'none' }}>
-                <li className={titulo==="Created"? "li-activo" :"li"} >New Creation</li>
+                <button className={titulo==="Created"? "li-activo" :"li"} >New Creation</button>
                 </Link>
-               {/*  <li className="item"><Search/></li> */}
-            </ol>
-        </nav>
-        <Search /> 
+        
+
+       {titulo==="DogsHome" &&<Search seteo={seteo} /> } 
         </div>
 
     )

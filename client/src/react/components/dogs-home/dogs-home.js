@@ -1,5 +1,5 @@
-import React from "react";
-import { getDogs, getTemperaments, filterTemperaments, filterRaza, filterAlfabetico, filterPeso } from "../../../redux/actions"
+import React, {useEffect} from "react";
+import { getDogs, getTemperaments, filterTemperaments, filterRaza, filterOrdenamiento, pageReload } from "../../../redux/actions"
 import { useDispatch, useSelector } from  "react-redux";
 import Dogs from "../dogs/dogs.js"
 import "./dogs-home.css"
@@ -12,22 +12,27 @@ import Loader from "../loader/loader.js"
 import Perrito from "../../../img/div.png"
 import Errores from "../errores/errores";
 
+
 const DogsHome=()=>{
     const dispatch=useDispatch()
     const [page, setPage]=React.useState(1)
     const [cantidadDogs]=React.useState(8)
     const dogs=useSelector((state)=>state.dogsLoaded)
+    const reload=useSelector((state)=>state.dogsLanding) 
     const temperaments=useSelector((state)=>state.dogsTemperaments)
     const [orden, setOrden]=React.useState("")
-   /*  const [created, setCreated]=React.useState(false) */
     const [isOpenCreated, openCreated, closeCreated]=Funciones(false);
     const titulo="DogsHome"
     const error=useSelector(state=>state.dogsError)
+    let key=882930492;
 
-    React.useEffect(()=>{
-      dispatch(getDogs())
-      dispatch(getTemperaments())
-    },[dispatch])
+  useEffect(function reloaded(){
+  if(reload!==true){
+    dispatch(getDogs())
+    dispatch(getTemperaments())
+    dispatch(pageReload())
+  }
+},[reload,dispatch]);
 
     const indexOfLast=page*cantidadDogs
     const indexOfFirst=indexOfLast-cantidadDogs
@@ -43,38 +48,35 @@ const DogsHome=()=>{
       if(page>1){
         setPage(page-1)
       }}
+      const seteoSearch=()=>{
+        setPage(1)
+      }
 
-    
     const Filtro=(e)=>{
       dispatch(filterTemperaments(e.target.value))
       setPage(1)
     }
-    const Alfabetico=(e)=>{
+    const Ordenamiento=(e)=>{
       e.preventDefault();
-      dispatch(filterAlfabetico(e.target.value))
+      dispatch(filterOrdenamiento(e.target.value))
       setPage(1)
       setOrden(`Ordenado ${e.target.value}`)
-    }
-    const Peso=(e)=>{
-      e.preventDefault();
-      dispatch(filterPeso(e.target.value))
-      setPage(1)
-      setOrden( orden+ `Ordenado ${e.target.value}`)
     }
      
     const Razas=(e)=>{
       dispatch(filterRaza(e.target.value))
       setPage(1)
+      setOrden(`Ordenado ${e.target.value}`)
 
     }
-   const Recargar=()=>{
-    dispatch(getDogs())
-    setPage(1)
+   const Recargar=(e)=>{
+    e.preventDefault();
+    dispatch(pageReload())
+    setPage(1) 
    }
-
     return (
       <div className="dogs">
-      <Navegation titulo={titulo}/>
+      <Navegation titulo={titulo} seteo={seteoSearch}/>
       <div className="body-dogs">
         <div className="image">
           <img src={image} alt="crear"/>
@@ -87,7 +89,7 @@ const DogsHome=()=>{
        <div className="div-select">
        <span >Filter by temperaments</span>
        <select className="select" name="Temperaments" onChange={(e)=>Filtro(e)}>
-       <option className="opt" value="All">All Temperaments</option>  
+       <option className="opt" value="All" >All Temperaments</option>  
         {temperaments && temperaments.map((el)=>(
           <option className="opt" key={el.id} value={el.name}>{el.name}</option>
         ))}
@@ -95,22 +97,18 @@ const DogsHome=()=>{
        </div>
        <div className="div-select">
        <span >Order by</span>
-       <select className="select" onChange={(e)=>Alfabetico(e)}>
-        <option className="opt" value="asc"> A-Z</option>
+       <select className="select" onChange={(e)=>Ordenamiento(e)}>
+        <option  className="opt" value="asc">A-Z</option>
         <option className="opt" value="desc">Z-A</option>
+        <option className="opt" value="p_asc">Min-Max</option>
+        <option className="opt" value="p_desc">Max-Min</option>
        </select>
        </div>
-       <div className="div-select">
-        <span >Order by weight</span>
-        <select className="select" onChange={(e)=>Peso(e)}>
-        <option className="opt" value="asc">Min-Max</option>
-        <option className="opt" value="desc">Max-Min</option>
-       </select> 
-       </div>
+    
        <div className="div-select">
        <span >Filter by breed</span>
        <select className="select" onChange={(e)=>Razas(e)}>
-        <option className="opt" value="All">All</option>
+        <option className="opt" value="All" >All</option>
         <option className="opt" value="created">Created</option>
         <option  className="opt"value="api">Api</option>
        </select>
@@ -119,9 +117,9 @@ const DogsHome=()=>{
        <span >Update page</span>
        <button className="reload" onClick={Recargar}>Reload</button>
        </div>
-     
+   
       <div className="paginado">
-        <br/>
+      
        {dogs.length>0 &&  <Paginado page={page} cantidadDogs={cantidadDogs} 
         dogs={dogs}
         NextPage={NextPage}
@@ -129,20 +127,17 @@ const DogsHome=()=>{
         </div>
 
        <div className="container">
-       {dogs.length===0 && <Loader/>}  
-
+       {dogs.length===0 && orden!=="Ordenado created" && <Loader/>}  
+       {dogs.length===0 && orden==="Ordenado created" && <h1 className="dogs-h1">No hay creados</h1>}
        {currentDogs && currentDogs.map((el)=>{ 
           return(
-          <div key={parseInt(el.id)} className="contenedor">
+          <div key={key++} className="contenedor">
           <Dogs 
           id={el.id}
           name={el.name} 
           weightMetric={el.weight?.metric} 
           weightImperial={el.weight.imperial ? el.weight.imperial : null} 
-         /*  heightMetric={el.height?.metric} 
-          heightImperial={el.height.imperial ? el.height.imperial : null}  
-          life_span={el.life_span}  */
-           image={el.image?.url ?  el.image.url : el.image? el.image: el.reference_image_id ? `https://cdn2.thedogapi.com/images/${el.reference_image_id}.jpg`: Perrito } 
+          image={el.image?.url ?  el.image.url : el.image? el.image: el.reference_image_id ? `https://cdn2.thedogapi.com/images/${el.reference_image_id}.jpg`: Perrito } 
           temperaments={el.temperament? el.temperament : !el.createdInDb ? el.temperaments : el.temperaments.map(el=>el.name + (", "))} 
           createInDb={el.createdInDb ? "true" : "false"}/> 
           </div>
